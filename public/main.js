@@ -11,12 +11,17 @@ jQuery(document).ready(function() {
         messages.append('<div>' + message + '</div>');
     };
     
-    socket.on('connect', function(){
-    var newUser = "User connected"
-    console.log(""+newUser);
-    addMessage(newUser);
-});
+//     socket.on('connect', function(){
+//     var newUser = "User connected"
+//     console.log(""+newUser);
+//     addMessage(newUser);
+// });
 
+
+
+    var nickname = prompt("Please enter a nickname");
+    socket.emit('nickname',nickname);
+    
 
    input.on('keydown', function(event) {
     if (event.keyCode != 13) {
@@ -35,11 +40,7 @@ socket.on('connect', function(){
 
 socket.on('message', addMessage);
 
-socket.on('disconnect', function(){
-    var endUser = "User disconnected"
-    console.log(""+endUser);
-    addMessage(endUser);
-});
+
 
 });
 
